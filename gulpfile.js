@@ -8,7 +8,7 @@ gulp.task('sass', () => {
     'src/scss/*.scss'
   ])
   .pipe(sass({outputStyle: 'compressed'}))
-  .pipe(gulp.dest('src/css'))
+  .pipe(gulp.dest('src/public/css'))
   .pipe(browserSync.stream());
 });
 
@@ -18,7 +18,7 @@ gulp.task('js', () => {
     'node_modules/jquery/dist/jquery.min.js',
     'node_modules/popper.js/dist/umd/popper.min.js'
   ])
-  .pipe(gulp.dest('src/js'))
+  .pipe(gulp.dest('src/public/js'))
   .pipe(browserSync.stream());
 });
 
@@ -38,12 +38,12 @@ gulp.task('serve', ['sass'], () => {
 
 gulp.task('font-awesome', () => {
   return gulp.src('node_modules/font-awesome/css/font-awesome.min.css')
-  .pipe(gulp.dest('src/css'));
+  .pipe(gulp.dest('src/public/css'));
 })
 
 gulp.task('fonts', () => {
   return gulp.src('node_modules/font-awesome/fonts/*')
-    .pipe(gulp.dest('src/fonts'));
+    .pipe(gulp.dest('src/public/fonts'));
 });
 
 gulp.task('default', ['js', 'serve', 'font-awesome', 'fonts'])
